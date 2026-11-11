@@ -230,8 +230,14 @@ func (s *PasskeyService) PasskeyFinishRegistration(ctx context.Context, req *use
 		PublicKey:    credential.PublicKey,
 		SignCount:    credential.Authenticator.SignCount,
 		Transports:   transportStrings(credential.Transport),
-		Name:         name,
-		CreatedAt:    now,
+		Flags: CredentialFlags{
+			UserPresent:    credential.Flags.UserPresent,
+			UserVerified:   credential.Flags.UserVerified,
+			BackupEligible: credential.Flags.BackupEligible,
+			BackupState:    credential.Flags.BackupState,
+		},
+		Name:      name,
+		CreatedAt: now,
 	}
 	if err := s.store.CreatePasskeyCredential(ctx, pc); err != nil {
 		return nil, s.internal(ctx, "store credential", err)
@@ -325,16 +331,23 @@ func (s *PasskeyService) PasskeyFinishAuthentication(ctx context.Context, req *u
 			return nil, err
 		}
 		creds := []webauthn.Credential{{
-			ID:            pc.CredentialID,
-			PublicKey:     pc.PublicKey,
+			ID:        pc.CredentialID,
+			PublicKey: pc.PublicKey,
 			Authenticator: webauthn.Authenticator{SignCount: pc.SignCount},
+			Flags: webauthn.CredentialFlags{
+				UserPresent:    pc.Flags.UserPresent,
+				UserVerified:   pc.Flags.UserVerified,
+				BackupEligible: pc.Flags.BackupEligible,
+				BackupState:    pc.Flags.BackupState,
+			},
 		}}
 		return passkeyUser{user: u, credentials: creds}, nil
 	}
 
 	credential, err := s.wa.ValidateDiscoverableLogin(handler, session, parsedAssertion)
 	if err != nil {
-		return nil, status.Error(codes.Unauthenticated, "passkey authentication failed")
+		s.log.WarnContext(ctx, "passkey authentication verification failed", slog.Any("error", err))
+		return nil, status.Errorf(codes.Unauthenticated, "passkey authentication failed: %v", err)
 	}
 
 	// Update sign count to prevent replay attacks.

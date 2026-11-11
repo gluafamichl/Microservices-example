@@ -92,6 +92,14 @@ type ListCursor struct {
 	ID        uuid.UUID
 }
 
+// CredentialFlags mirrors webauthn.CredentialFlags for persistence.
+type CredentialFlags struct {
+	UserPresent    bool `json:"userPresent"`
+	UserVerified   bool `json:"userVerified"`
+	BackupEligible bool `json:"backupEligible"`
+	BackupState    bool `json:"backupState"`
+}
+
 // PasskeyCredential is a stored WebAuthn credential.
 type PasskeyCredential struct {
 	ID           uuid.UUID
@@ -100,6 +108,7 @@ type PasskeyCredential struct {
 	PublicKey    []byte
 	SignCount    uint32
 	Transports   []string
+	Flags        CredentialFlags
 	Name         string
 	CreatedAt    time.Time
 }

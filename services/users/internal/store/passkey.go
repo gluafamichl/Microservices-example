@@ -2,6 +2,7 @@ package store
 
 import (
 	"context"
+	"encoding/json"
 	"time"
 
 	"github.com/google/uuid"
@@ -46,17 +47,21 @@ func (s *Store) ConsumePasskeyChallenge(ctx context.Context, challengeID string,
 // ---- Credentials ----
 
 func (s *Store) CreatePasskeyCredential(ctx context.Context, c service.PasskeyCredential) error {
-	_, err := s.pool.Exec(ctx,
+	flagsJSON, err := json.Marshal(c.Flags)
+	if err != nil {
+		return err
+	}
+	_, err = s.pool.Exec(ctx,
 		`INSERT INTO passkey_credentials
-			(id, user_id, credential_id, public_key, sign_count, transports, name, created_at)
-		 VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`,
-		c.ID, c.UserID, c.CredentialID, c.PublicKey, c.SignCount, c.Transports, c.Name, c.CreatedAt)
+			(id, user_id, credential_id, public_key, sign_count, transports, flags, name, created_at)
+		 VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`,
+		c.ID, c.UserID, c.CredentialID, c.PublicKey, c.SignCount, c.Transports, flagsJSON, c.Name, c.CreatedAt)
 	return err
 }
 
 func (s *Store) GetPasskeyCredentialByCredentialID(ctx context.Context, credentialID []byte) (service.PasskeyCredential, error) {
 	return scanPasskeyCredential(s.pool.QueryRow(ctx,
-		`SELECT id, user_id, credential_id, public_key, sign_count, transports, name, created_at
+		`SELECT id, user_id, credential_id, public_key, sign_count, transports, flags, name, created_at
 		 FROM   passkey_credentials
 		 WHERE  credential_id = $1`,
 		credentialID))
@@ -64,7 +69,7 @@ func (s *Store) GetPasskeyCredentialByCredentialID(ctx context.Context, credenti
 
 func (s *Store) ListPasskeyCredentialsByUser(ctx context.Context, userID uuid.UUID) ([]service.PasskeyCredential, error) {
 	rows, err := s.pool.Query(ctx,
-		`SELECT id, user_id, credential_id, public_key, sign_count, transports, name, created_at
+		`SELECT id, user_id, credential_id, public_key, sign_count, transports, flags, name, created_at
 		 FROM   passkey_credentials
 		 WHERE  user_id = $1
 		 ORDER BY created_at`,
@@ -118,13 +123,19 @@ func (s *Store) GetUserByPasskeyCredentialID(ctx context.Context, credentialID [
 type passkeyCols interface{ Scan(dest ...any) error }
 
 func scanPasskeyCredential(r passkeyCols) (service.PasskeyCredential, error) {
-	var c service.PasskeyCredential
+	var (
+		c         service.PasskeyCredential
+		flagsJSON []byte
+	)
 	err := r.Scan(
 		&c.ID, &c.UserID, &c.CredentialID, &c.PublicKey,
-		&c.SignCount, &c.Transports, &c.Name, &c.CreatedAt,
+		&c.SignCount, &c.Transports, &flagsJSON, &c.Name, &c.CreatedAt,
 	)
 	if pgxutil.IsNotFound(err) {
 		return service.PasskeyCredential{}, service.ErrPasskeyNotFound
+	}
+	if err == nil && len(flagsJSON) > 0 {
+		_ = json.Unmarshal(flagsJSON, &c.Flags)
 	}
 	return c, err
 }
