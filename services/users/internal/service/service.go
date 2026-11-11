@@ -111,6 +111,9 @@ func PublicMethods() map[string]bool {
 		userv1.AuthService_RequestPasswordReset_FullMethodName: true,
 		userv1.AuthService_ResetPassword_FullMethodName:        true,
 		userv1.AuthService_VerifyEmail_FullMethodName:          true,
+		// Passkey authentication is public (no token required to start a login).
+		userv1.PasskeyService_PasskeyBeginAuthentication_FullMethodName:  true,
+		userv1.PasskeyService_PasskeyFinishAuthentication_FullMethodName: true,
 	}
 }
 

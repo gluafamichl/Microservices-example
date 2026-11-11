@@ -31,13 +31,17 @@ func TestRegistrationCoversContract(t *testing.T) {
 		userv1.AuthService_RefreshToken_FullMethodName, userv1.AuthService_Logout_FullMethodName,
 		userv1.AuthService_RequestPasswordReset_FullMethodName, userv1.AuthService_ResetPassword_FullMethodName,
 		userv1.AuthService_VerifyEmail_FullMethodName, "/grpc.health.v1.Health/Check",
+		// Passkey authentication endpoints are public (no token needed to start a login).
+		userv1.PasskeyService_PasskeyBeginAuthentication_FullMethodName,
+		userv1.PasskeyService_PasskeyFinishAuthentication_FullMethodName,
 	} {
 		if !pub[m] {
 			t.Errorf("%s should be public", m)
 		}
 	}
-	if len(pub) != 8 {
-		t.Fatalf("public methods = %d, want 8 (7 contract + health check)", len(pub))
+	// 7 original + health check + 2 passkey public methods = 10
+	if len(pub) != 10 {
+		t.Fatalf("public methods = %d, want 10 (9 contract + health check)", len(pub))
 	}
 }
 
