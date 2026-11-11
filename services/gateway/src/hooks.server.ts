@@ -18,6 +18,10 @@ export const handle: Handle = async ({ event, resolve }) => {
 	const { pathname, search } = event.url;
 	const isPublic = publicPaths.some((p) => pathname === p || pathname.startsWith(`${p}/`));
 	if (!event.locals.session && !isPublic) {
+		// API routes must return 401, not a redirect, so the client can handle it.
+		if (pathname.startsWith('/api/')) {
+			return new Response('Unauthorized', { status: 401 });
+		}
 		redirect(303, `/login?next=${encodeURIComponent(pathname + search)}`);
 	}
 	return resolve(event);

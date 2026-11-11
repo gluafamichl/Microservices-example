@@ -1,5 +1,5 @@
 import { json, error } from '@sveltejs/kit';
-import { clients } from '#lib/server/clients.js';
+import { api } from '#lib/server/clients.js';
 import type { RequestHandler } from './$types';
 
 /**
@@ -12,7 +12,7 @@ export const POST: RequestHandler = async ({ request, locals }) => {
 	const body = await request.json();
 	const credentialJson = new TextEncoder().encode(JSON.stringify(body));
 
-	const res = await clients(locals.session.accessToken).passkey.passkeyFinishRegistration({
+	const res = await api(locals).passkey.passkeyFinishRegistration({
 		userId: locals.session.userId,
 		credentialJson,
 		name: body.name ?? ''

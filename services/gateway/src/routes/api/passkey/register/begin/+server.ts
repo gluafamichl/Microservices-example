@@ -1,5 +1,5 @@
 import { json, error } from '@sveltejs/kit';
-import { clients } from '#lib/server/clients.js';
+import { api } from '#lib/server/clients.js';
 import type { RequestHandler } from './$types';
 
 /**
@@ -8,7 +8,7 @@ import type { RequestHandler } from './$types';
  */
 export const POST: RequestHandler = async ({ locals }) => {
 	if (!locals.session) error(401, 'Not authenticated');
-	const res = await clients(locals.session.accessToken).passkey.passkeyBeginRegistration({
+	const res = await api(locals).passkey.passkeyBeginRegistration({
 		userId: locals.session.userId
 	});
 	return json(JSON.parse(new TextDecoder().decode(res.optionsJson)));
