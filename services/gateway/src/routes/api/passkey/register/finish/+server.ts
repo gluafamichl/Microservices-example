@@ -17,5 +17,17 @@ export const POST: RequestHandler = async ({ request, locals }) => {
 		credentialJson,
 		name: body.name ?? ''
 	});
-	return json({ passkey: res.passkey });
+
+	// Protobuf Timestamps contain bigint fields that JSON.stringify cannot handle.
+	// Return only the fields the client actually needs.
+	const pk = res.passkey;
+	return json({
+		passkey: pk
+			? {
+					id: pk.id,
+					name: pk.name,
+					createdAt: pk.createdAt ? new Date(Number(pk.createdAt.seconds) * 1000).toISOString() : null
+				}
+			: null
+	});
 };
