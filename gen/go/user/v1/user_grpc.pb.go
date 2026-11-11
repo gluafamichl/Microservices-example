@@ -601,3 +601,295 @@ var AuthService_ServiceDesc = grpc.ServiceDesc{
 	Streams:  []grpc.StreamDesc{},
 	Metadata: "user/v1/user.proto",
 }
+
+const (
+	PasskeyService_PasskeyBeginRegistration_FullMethodName    = "/user.v1.PasskeyService/PasskeyBeginRegistration"
+	PasskeyService_PasskeyFinishRegistration_FullMethodName   = "/user.v1.PasskeyService/PasskeyFinishRegistration"
+	PasskeyService_PasskeyBeginAuthentication_FullMethodName  = "/user.v1.PasskeyService/PasskeyBeginAuthentication"
+	PasskeyService_PasskeyFinishAuthentication_FullMethodName = "/user.v1.PasskeyService/PasskeyFinishAuthentication"
+	PasskeyService_ListPasskeys_FullMethodName                = "/user.v1.PasskeyService/ListPasskeys"
+	PasskeyService_DeletePasskey_FullMethodName               = "/user.v1.PasskeyService/DeletePasskey"
+)
+
+// PasskeyServiceClient is the client API for PasskeyService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type PasskeyServiceClient interface {
+	PasskeyBeginRegistration(ctx context.Context, in *PasskeyBeginRegistrationRequest, opts ...grpc.CallOption) (*PasskeyBeginRegistrationResponse, error)
+	PasskeyFinishRegistration(ctx context.Context, in *PasskeyFinishRegistrationRequest, opts ...grpc.CallOption) (*PasskeyFinishRegistrationResponse, error)
+	PasskeyBeginAuthentication(ctx context.Context, in *PasskeyBeginAuthenticationRequest, opts ...grpc.CallOption) (*PasskeyBeginAuthenticationResponse, error)
+	PasskeyFinishAuthentication(ctx context.Context, in *PasskeyFinishAuthenticationRequest, opts ...grpc.CallOption) (*PasskeyFinishAuthenticationResponse, error)
+	ListPasskeys(ctx context.Context, in *ListPasskeysRequest, opts ...grpc.CallOption) (*ListPasskeysResponse, error)
+	DeletePasskey(ctx context.Context, in *DeletePasskeyRequest, opts ...grpc.CallOption) (*DeletePasskeyResponse, error)
+}
+
+type passkeyServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewPasskeyServiceClient(cc grpc.ClientConnInterface) PasskeyServiceClient {
+	return &passkeyServiceClient{cc}
+}
+
+func (c *passkeyServiceClient) PasskeyBeginRegistration(ctx context.Context, in *PasskeyBeginRegistrationRequest, opts ...grpc.CallOption) (*PasskeyBeginRegistrationResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(PasskeyBeginRegistrationResponse)
+	err := c.cc.Invoke(ctx, PasskeyService_PasskeyBeginRegistration_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *passkeyServiceClient) PasskeyFinishRegistration(ctx context.Context, in *PasskeyFinishRegistrationRequest, opts ...grpc.CallOption) (*PasskeyFinishRegistrationResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(PasskeyFinishRegistrationResponse)
+	err := c.cc.Invoke(ctx, PasskeyService_PasskeyFinishRegistration_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *passkeyServiceClient) PasskeyBeginAuthentication(ctx context.Context, in *PasskeyBeginAuthenticationRequest, opts ...grpc.CallOption) (*PasskeyBeginAuthenticationResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(PasskeyBeginAuthenticationResponse)
+	err := c.cc.Invoke(ctx, PasskeyService_PasskeyBeginAuthentication_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *passkeyServiceClient) PasskeyFinishAuthentication(ctx context.Context, in *PasskeyFinishAuthenticationRequest, opts ...grpc.CallOption) (*PasskeyFinishAuthenticationResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(PasskeyFinishAuthenticationResponse)
+	err := c.cc.Invoke(ctx, PasskeyService_PasskeyFinishAuthentication_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *passkeyServiceClient) ListPasskeys(ctx context.Context, in *ListPasskeysRequest, opts ...grpc.CallOption) (*ListPasskeysResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListPasskeysResponse)
+	err := c.cc.Invoke(ctx, PasskeyService_ListPasskeys_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *passkeyServiceClient) DeletePasskey(ctx context.Context, in *DeletePasskeyRequest, opts ...grpc.CallOption) (*DeletePasskeyResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeletePasskeyResponse)
+	err := c.cc.Invoke(ctx, PasskeyService_DeletePasskey_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// PasskeyServiceServer is the server API for PasskeyService service.
+// All implementations must embed UnimplementedPasskeyServiceServer
+// for forward compatibility.
+type PasskeyServiceServer interface {
+	PasskeyBeginRegistration(context.Context, *PasskeyBeginRegistrationRequest) (*PasskeyBeginRegistrationResponse, error)
+	PasskeyFinishRegistration(context.Context, *PasskeyFinishRegistrationRequest) (*PasskeyFinishRegistrationResponse, error)
+	PasskeyBeginAuthentication(context.Context, *PasskeyBeginAuthenticationRequest) (*PasskeyBeginAuthenticationResponse, error)
+	PasskeyFinishAuthentication(context.Context, *PasskeyFinishAuthenticationRequest) (*PasskeyFinishAuthenticationResponse, error)
+	ListPasskeys(context.Context, *ListPasskeysRequest) (*ListPasskeysResponse, error)
+	DeletePasskey(context.Context, *DeletePasskeyRequest) (*DeletePasskeyResponse, error)
+	mustEmbedUnimplementedPasskeyServiceServer()
+}
+
+// UnimplementedPasskeyServiceServer must be embedded to have
+// forward compatible implementations.
+//
+// NOTE: this should be embedded by value instead of pointer to avoid a nil
+// pointer dereference when methods are called.
+type UnimplementedPasskeyServiceServer struct{}
+
+func (UnimplementedPasskeyServiceServer) PasskeyBeginRegistration(context.Context, *PasskeyBeginRegistrationRequest) (*PasskeyBeginRegistrationResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method PasskeyBeginRegistration not implemented")
+}
+func (UnimplementedPasskeyServiceServer) PasskeyFinishRegistration(context.Context, *PasskeyFinishRegistrationRequest) (*PasskeyFinishRegistrationResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method PasskeyFinishRegistration not implemented")
+}
+func (UnimplementedPasskeyServiceServer) PasskeyBeginAuthentication(context.Context, *PasskeyBeginAuthenticationRequest) (*PasskeyBeginAuthenticationResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method PasskeyBeginAuthentication not implemented")
+}
+func (UnimplementedPasskeyServiceServer) PasskeyFinishAuthentication(context.Context, *PasskeyFinishAuthenticationRequest) (*PasskeyFinishAuthenticationResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method PasskeyFinishAuthentication not implemented")
+}
+func (UnimplementedPasskeyServiceServer) ListPasskeys(context.Context, *ListPasskeysRequest) (*ListPasskeysResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method ListPasskeys not implemented")
+}
+func (UnimplementedPasskeyServiceServer) DeletePasskey(context.Context, *DeletePasskeyRequest) (*DeletePasskeyResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method DeletePasskey not implemented")
+}
+func (UnimplementedPasskeyServiceServer) mustEmbedUnimplementedPasskeyServiceServer() {}
+func (UnimplementedPasskeyServiceServer) testEmbeddedByValue()                        {}
+
+// UnsafePasskeyServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to PasskeyServiceServer will
+// result in compilation errors.
+type UnsafePasskeyServiceServer interface {
+	mustEmbedUnimplementedPasskeyServiceServer()
+}
+
+func RegisterPasskeyServiceServer(s grpc.ServiceRegistrar, srv PasskeyServiceServer) {
+	// If the following call panics, it indicates UnimplementedPasskeyServiceServer was
+	// embedded by pointer and is nil.  This will cause panics if an
+	// unimplemented method is ever invoked, so we test this at initialization
+	// time to prevent it from happening at runtime later due to I/O.
+	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
+		t.testEmbeddedByValue()
+	}
+	s.RegisterService(&PasskeyService_ServiceDesc, srv)
+}
+
+func _PasskeyService_PasskeyBeginRegistration_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PasskeyBeginRegistrationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PasskeyServiceServer).PasskeyBeginRegistration(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: PasskeyService_PasskeyBeginRegistration_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PasskeyServiceServer).PasskeyBeginRegistration(ctx, req.(*PasskeyBeginRegistrationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _PasskeyService_PasskeyFinishRegistration_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PasskeyFinishRegistrationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PasskeyServiceServer).PasskeyFinishRegistration(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: PasskeyService_PasskeyFinishRegistration_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PasskeyServiceServer).PasskeyFinishRegistration(ctx, req.(*PasskeyFinishRegistrationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _PasskeyService_PasskeyBeginAuthentication_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PasskeyBeginAuthenticationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PasskeyServiceServer).PasskeyBeginAuthentication(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: PasskeyService_PasskeyBeginAuthentication_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PasskeyServiceServer).PasskeyBeginAuthentication(ctx, req.(*PasskeyBeginAuthenticationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _PasskeyService_PasskeyFinishAuthentication_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PasskeyFinishAuthenticationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PasskeyServiceServer).PasskeyFinishAuthentication(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: PasskeyService_PasskeyFinishAuthentication_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PasskeyServiceServer).PasskeyFinishAuthentication(ctx, req.(*PasskeyFinishAuthenticationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _PasskeyService_ListPasskeys_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListPasskeysRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PasskeyServiceServer).ListPasskeys(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: PasskeyService_ListPasskeys_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PasskeyServiceServer).ListPasskeys(ctx, req.(*ListPasskeysRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _PasskeyService_DeletePasskey_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeletePasskeyRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PasskeyServiceServer).DeletePasskey(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: PasskeyService_DeletePasskey_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PasskeyServiceServer).DeletePasskey(ctx, req.(*DeletePasskeyRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// PasskeyService_ServiceDesc is the grpc.ServiceDesc for PasskeyService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var PasskeyService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "user.v1.PasskeyService",
+	HandlerType: (*PasskeyServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "PasskeyBeginRegistration",
+			Handler:    _PasskeyService_PasskeyBeginRegistration_Handler,
+		},
+		{
+			MethodName: "PasskeyFinishRegistration",
+			Handler:    _PasskeyService_PasskeyFinishRegistration_Handler,
+		},
+		{
+			MethodName: "PasskeyBeginAuthentication",
+			Handler:    _PasskeyService_PasskeyBeginAuthentication_Handler,
+		},
+		{
+			MethodName: "PasskeyFinishAuthentication",
+			Handler:    _PasskeyService_PasskeyFinishAuthentication_Handler,
+		},
+		{
+			MethodName: "ListPasskeys",
+			Handler:    _PasskeyService_ListPasskeys_Handler,
+		},
+		{
+			MethodName: "DeletePasskey",
+			Handler:    _PasskeyService_DeletePasskey_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "user/v1/user.proto",
+}

@@ -10,6 +10,7 @@ import (
 	userv1 "github.com/francispowlesland/microservices-app-go/gen/go/user/v1"
 )
 
+
 // Roles.
 const (
 	RoleAdmin    = "admin"
@@ -32,6 +33,11 @@ var (
 	ErrTokenReused    = errors.New("refresh token reuse detected")
 	ErrUserNotActive  = errors.New("user not active")
 	ErrAdminPreexists = errors.New("an admin already exists")
+
+	// Passkey sentinel errors.
+	ErrChallengeExpired  = errors.New("passkey challenge expired or not found")
+	ErrCredentialInvalid = errors.New("passkey credential verification failed")
+	ErrPasskeyNotFound   = errors.New("passkey not found")
 )
 
 // User is the stored identity, including credential state.
@@ -84,6 +90,53 @@ type OneTimeToken struct {
 type ListCursor struct {
 	CreatedAt time.Time
 	ID        uuid.UUID
+}
+
+// PasskeyCredential is a stored WebAuthn credential.
+type PasskeyCredential struct {
+	ID           uuid.UUID
+	UserID       uuid.UUID
+	CredentialID []byte
+	PublicKey    []byte
+	SignCount    uint32
+	Transports   []string
+	Name         string
+	CreatedAt    time.Time
+}
+
+// PasskeyChallenge is a short-lived server-side WebAuthn challenge (TTL ~5 min).
+// Challenge is stored as the base64url string produced by go-webauthn SessionData.Challenge.
+// UserID is nil for the usernameless authentication flow.
+type PasskeyChallenge struct {
+	ChallengeID string
+	UserID      *uuid.UUID
+	Challenge   string // base64url, as-is from webauthn.SessionData.Challenge
+	ExpiresAt   time.Time
+	CreatedAt   time.Time
+}
+
+// PasskeyStore is the persistence port for WebAuthn passkey operations.
+// store.Store implements both Store and PasskeyStore.
+type PasskeyStore interface {
+	// CreatePasskeyChallenge persists a short-lived challenge.
+	CreatePasskeyChallenge(ctx context.Context, c PasskeyChallenge) error
+	// ConsumePasskeyChallenge atomically marks a valid challenge as consumed (single-use).
+	// Returns ErrChallengeExpired if unknown, expired, or already consumed.
+	ConsumePasskeyChallenge(ctx context.Context, challengeID string, now time.Time) (PasskeyChallenge, error)
+
+	// CreatePasskeyCredential stores a verified credential after registration.
+	CreatePasskeyCredential(ctx context.Context, c PasskeyCredential) error
+	// GetPasskeyCredentialByCredentialID returns the credential matching the raw credential ID bytes.
+	GetPasskeyCredentialByCredentialID(ctx context.Context, credentialID []byte) (PasskeyCredential, error)
+	// ListPasskeyCredentialsByUser returns all credentials for a user, ordered by created_at.
+	ListPasskeyCredentialsByUser(ctx context.Context, userID uuid.UUID) ([]PasskeyCredential, error)
+	// UpdatePasskeySignCount updates the sign counter after a successful authentication.
+	UpdatePasskeySignCount(ctx context.Context, id uuid.UUID, signCount uint32) error
+	// DeletePasskeyCredential removes the credential. Returns ErrPasskeyNotFound if missing or wrong owner.
+	DeletePasskeyCredential(ctx context.Context, id, userID uuid.UUID) error
+
+	// GetUserByPasskeyCredentialID returns the owner of a given credential.
+	GetUserByPasskeyCredentialID(ctx context.Context, credentialID []byte) (User, error)
 }
 
 // Store is the persistence port. Implementations must make each method atomic.

@@ -12,7 +12,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file user/v1/user.proto.
  */
 export const file_user_v1_user: GenFile = /*@__PURE__*/
-  fileDesc("ChJ1c2VyL3YxL3VzZXIucHJvdG8SB3VzZXIudjEioAIKBFVzZXISCgoCaWQYASABKAkSDQoFZW1haWwYAiABKAkSEAoIdXNlcm5hbWUYAyABKAkSDAoEbmFtZRgEIAEoCRIjCgZzdGF0dXMYBSABKA4yEy51c2VyLnYxLlVzZXJTdGF0dXMSFgoOZW1haWxfdmVyaWZpZWQYBiABKAgSDQoFcm9sZXMYByADKAkSLgoKY3JlYXRlZF9hdBgIIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASLgoKdXBkYXRlZF9hdBgJIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASMQoNbGFzdF9sb2dpbl9hdBgKIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAiugEKBlRva2VucxIZCgxhY2Nlc3NfdG9rZW4YASABKAlCA4ABARIaCg1yZWZyZXNoX3Rva2VuGAIgASgJQgOAAQESOwoXYWNjZXNzX3Rva2VuX2V4cGlyZXNfYXQYAyABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEjwKGHJlZnJlc2hfdG9rZW5fZXhwaXJlc19hdBgEIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAiWQoRQ3JlYXRlVXNlclJlcXVlc3QSDQoFZW1haWwYASABKAkSEAoIdXNlcm5hbWUYAiABKAkSDAoEbmFtZRgDIAEoCRIVCghwYXNzd29yZBgEIAEoCUIDgAEBIjEKEkNyZWF0ZVVzZXJSZXNwb25zZRIbCgR1c2VyGAEgASgLMg0udXNlci52MS5Vc2VyIhwKDkdldFVzZXJSZXF1ZXN0EgoKAmlkGAEgASgJIi4KD0dldFVzZXJSZXNwb25zZRIbCgR1c2VyGAEgASgLMg0udXNlci52MS5Vc2VyImEKEVVwZGF0ZVVzZXJSZXF1ZXN0EhsKBHVzZXIYASABKAsyDS51c2VyLnYxLlVzZXISLwoLdXBkYXRlX21hc2sYAiABKAsyGi5nb29nbGUucHJvdG9idWYuRmllbGRNYXNrIjEKElVwZGF0ZVVzZXJSZXNwb25zZRIbCgR1c2VyGAEgASgLMg0udXNlci52MS5Vc2VyIh8KEURlbGV0ZVVzZXJSZXF1ZXN0EgoKAmlkGAEgASgJIhQKEkRlbGV0ZVVzZXJSZXNwb25zZSI5ChBMaXN0VXNlcnNSZXF1ZXN0EhEKCXBhZ2Vfc2l6ZRgBIAEoBRISCgpwYWdlX3Rva2VuGAIgASgJIkoKEUxpc3RVc2Vyc1Jlc3BvbnNlEhwKBXVzZXJzGAEgAygLMg0udXNlci52MS5Vc2VyEhcKD25leHRfcGFnZV90b2tlbhgCIAEoCSI5CgxMb2dpblJlcXVlc3QSEgoKaWRlbnRpZmllchgBIAEoCRIVCghwYXNzd29yZBgCIAEoCUIDgAEBIk0KDUxvZ2luUmVzcG9uc2USGwoEdXNlchgBIAEoCzINLnVzZXIudjEuVXNlchIfCgZ0b2tlbnMYAiABKAsyDy51c2VyLnYxLlRva2VucyIxChNSZWZyZXNoVG9rZW5SZXF1ZXN0EhoKDXJlZnJlc2hfdG9rZW4YASABKAlCA4ABASI3ChRSZWZyZXNoVG9rZW5SZXNwb25zZRIfCgZ0b2tlbnMYASABKAsyDy51c2VyLnYxLlRva2VucyIrCg1Mb2dvdXRSZXF1ZXN0EhoKDXJlZnJlc2hfdG9rZW4YASABKAlCA4ABASIQCg5Mb2dvdXRSZXNwb25zZSJiChVDaGFuZ2VQYXNzd29yZFJlcXVlc3QSDwoHdXNlcl9pZBgBIAEoCRIdChBjdXJyZW50X3Bhc3N3b3JkGAIgASgJQgOAAQESGQoMbmV3X3Bhc3N3b3JkGAMgASgJQgOAAQEiGAoWQ2hhbmdlUGFzc3dvcmRSZXNwb25zZSIsChtSZXF1ZXN0UGFzc3dvcmRSZXNldFJlcXVlc3QSDQoFZW1haWwYASABKAkiHgocUmVxdWVzdFBhc3N3b3JkUmVzZXRSZXNwb25zZSJLChRSZXNldFBhc3N3b3JkUmVxdWVzdBIYCgtyZXNldF90b2tlbhgBIAEoCUIDgAEBEhkKDG5ld19wYXNzd29yZBgCIAEoCUIDgAEBIhcKFVJlc2V0UGFzc3dvcmRSZXNwb25zZSI1ChJWZXJpZnlFbWFpbFJlcXVlc3QSHwoSdmVyaWZpY2F0aW9uX3Rva2VuGAEgASgJQgOAAQEiMgoTVmVyaWZ5RW1haWxSZXNwb25zZRIbCgR1c2VyGAEgASgLMg0udXNlci52MS5Vc2VyKoIBCgpVc2VyU3RhdHVzEhsKF1VTRVJfU1RBVFVTX1VOU1BFQ0lGSUVEEAASJAogVVNFUl9TVEFUVVNfUEVORElOR19WRVJJRklDQVRJT04QARIWChJVU0VSX1NUQVRVU19BQ1RJVkUQAhIZChVVU0VSX1NUQVRVU19TVVNQRU5ERUQQAzLkAgoLVXNlclNlcnZpY2USRQoKQ3JlYXRlVXNlchIaLnVzZXIudjEuQ3JlYXRlVXNlclJlcXVlc3QaGy51c2VyLnYxLkNyZWF0ZVVzZXJSZXNwb25zZRI8CgdHZXRVc2VyEhcudXNlci52MS5HZXRVc2VyUmVxdWVzdBoYLnVzZXIudjEuR2V0VXNlclJlc3BvbnNlEkUKClVwZGF0ZVVzZXISGi51c2VyLnYxLlVwZGF0ZVVzZXJSZXF1ZXN0GhsudXNlci52MS5VcGRhdGVVc2VyUmVzcG9uc2USRQoKRGVsZXRlVXNlchIaLnVzZXIudjEuRGVsZXRlVXNlclJlcXVlc3QaGy51c2VyLnYxLkRlbGV0ZVVzZXJSZXNwb25zZRJCCglMaXN0VXNlcnMSGS51c2VyLnYxLkxpc3RVc2Vyc1JlcXVlc3QaGi51c2VyLnYxLkxpc3RVc2Vyc1Jlc3BvbnNlMp8ECgtBdXRoU2VydmljZRI2CgVMb2dpbhIVLnVzZXIudjEuTG9naW5SZXF1ZXN0GhYudXNlci52MS5Mb2dpblJlc3BvbnNlEksKDFJlZnJlc2hUb2tlbhIcLnVzZXIudjEuUmVmcmVzaFRva2VuUmVxdWVzdBodLnVzZXIudjEuUmVmcmVzaFRva2VuUmVzcG9uc2USOQoGTG9nb3V0EhYudXNlci52MS5Mb2dvdXRSZXF1ZXN0GhcudXNlci52MS5Mb2dvdXRSZXNwb25zZRJRCg5DaGFuZ2VQYXNzd29yZBIeLnVzZXIudjEuQ2hhbmdlUGFzc3dvcmRSZXF1ZXN0Gh8udXNlci52MS5DaGFuZ2VQYXNzd29yZFJlc3BvbnNlEmMKFFJlcXVlc3RQYXNzd29yZFJlc2V0EiQudXNlci52MS5SZXF1ZXN0UGFzc3dvcmRSZXNldFJlcXVlc3QaJS51c2VyLnYxLlJlcXVlc3RQYXNzd29yZFJlc2V0UmVzcG9uc2USTgoNUmVzZXRQYXNzd29yZBIdLnVzZXIudjEuUmVzZXRQYXNzd29yZFJlcXVlc3QaHi51c2VyLnYxLlJlc2V0UGFzc3dvcmRSZXNwb25zZRJICgtWZXJpZnlFbWFpbBIbLnVzZXIudjEuVmVyaWZ5RW1haWxSZXF1ZXN0GhwudXNlci52MS5WZXJpZnlFbWFpbFJlc3BvbnNlQp4BCgtjb20udXNlci52MUIJVXNlclByb3RvUAFaR2dpdGh1Yi5jb20vZnJhbmNpc3Bvd2xlc2xhbmQvbWljcm9zZXJ2aWNlcy1hcHAtZ28vZ2VuL2dvL3VzZXIvdjE7dXNlcnYxogIDVVhYqgIHVXNlci5WMcoCB1VzZXJcVjHiAhNVc2VyXFYxXEdQQk1ldGFkYXRh6gIIVXNlcjo6VjFiBnByb3RvMw", [file_google_protobuf_field_mask, file_google_protobuf_timestamp]);
+  fileDesc("ChJ1c2VyL3YxL3VzZXIucHJvdG8SB3VzZXIudjEioAIKBFVzZXISCgoCaWQYASABKAkSDQoFZW1haWwYAiABKAkSEAoIdXNlcm5hbWUYAyABKAkSDAoEbmFtZRgEIAEoCRIjCgZzdGF0dXMYBSABKA4yEy51c2VyLnYxLlVzZXJTdGF0dXMSFgoOZW1haWxfdmVyaWZpZWQYBiABKAgSDQoFcm9sZXMYByADKAkSLgoKY3JlYXRlZF9hdBgIIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASLgoKdXBkYXRlZF9hdBgJIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASMQoNbGFzdF9sb2dpbl9hdBgKIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAiugEKBlRva2VucxIZCgxhY2Nlc3NfdG9rZW4YASABKAlCA4ABARIaCg1yZWZyZXNoX3Rva2VuGAIgASgJQgOAAQESOwoXYWNjZXNzX3Rva2VuX2V4cGlyZXNfYXQYAyABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEjwKGHJlZnJlc2hfdG9rZW5fZXhwaXJlc19hdBgEIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAiWQoRQ3JlYXRlVXNlclJlcXVlc3QSDQoFZW1haWwYASABKAkSEAoIdXNlcm5hbWUYAiABKAkSDAoEbmFtZRgDIAEoCRIVCghwYXNzd29yZBgEIAEoCUIDgAEBIjEKEkNyZWF0ZVVzZXJSZXNwb25zZRIbCgR1c2VyGAEgASgLMg0udXNlci52MS5Vc2VyIhwKDkdldFVzZXJSZXF1ZXN0EgoKAmlkGAEgASgJIi4KD0dldFVzZXJSZXNwb25zZRIbCgR1c2VyGAEgASgLMg0udXNlci52MS5Vc2VyImEKEVVwZGF0ZVVzZXJSZXF1ZXN0EhsKBHVzZXIYASABKAsyDS51c2VyLnYxLlVzZXISLwoLdXBkYXRlX21hc2sYAiABKAsyGi5nb29nbGUucHJvdG9idWYuRmllbGRNYXNrIjEKElVwZGF0ZVVzZXJSZXNwb25zZRIbCgR1c2VyGAEgASgLMg0udXNlci52MS5Vc2VyIh8KEURlbGV0ZVVzZXJSZXF1ZXN0EgoKAmlkGAEgASgJIhQKEkRlbGV0ZVVzZXJSZXNwb25zZSI5ChBMaXN0VXNlcnNSZXF1ZXN0EhEKCXBhZ2Vfc2l6ZRgBIAEoBRISCgpwYWdlX3Rva2VuGAIgASgJIkoKEUxpc3RVc2Vyc1Jlc3BvbnNlEhwKBXVzZXJzGAEgAygLMg0udXNlci52MS5Vc2VyEhcKD25leHRfcGFnZV90b2tlbhgCIAEoCSI5CgxMb2dpblJlcXVlc3QSEgoKaWRlbnRpZmllchgBIAEoCRIVCghwYXNzd29yZBgCIAEoCUIDgAEBIk0KDUxvZ2luUmVzcG9uc2USGwoEdXNlchgBIAEoCzINLnVzZXIudjEuVXNlchIfCgZ0b2tlbnMYAiABKAsyDy51c2VyLnYxLlRva2VucyIxChNSZWZyZXNoVG9rZW5SZXF1ZXN0EhoKDXJlZnJlc2hfdG9rZW4YASABKAlCA4ABASI3ChRSZWZyZXNoVG9rZW5SZXNwb25zZRIfCgZ0b2tlbnMYASABKAsyDy51c2VyLnYxLlRva2VucyIrCg1Mb2dvdXRSZXF1ZXN0EhoKDXJlZnJlc2hfdG9rZW4YASABKAlCA4ABASIQCg5Mb2dvdXRSZXNwb25zZSJiChVDaGFuZ2VQYXNzd29yZFJlcXVlc3QSDwoHdXNlcl9pZBgBIAEoCRIdChBjdXJyZW50X3Bhc3N3b3JkGAIgASgJQgOAAQESGQoMbmV3X3Bhc3N3b3JkGAMgASgJQgOAAQEiGAoWQ2hhbmdlUGFzc3dvcmRSZXNwb25zZSIsChtSZXF1ZXN0UGFzc3dvcmRSZXNldFJlcXVlc3QSDQoFZW1haWwYASABKAkiHgocUmVxdWVzdFBhc3N3b3JkUmVzZXRSZXNwb25zZSJLChRSZXNldFBhc3N3b3JkUmVxdWVzdBIYCgtyZXNldF90b2tlbhgBIAEoCUIDgAEBEhkKDG5ld19wYXNzd29yZBgCIAEoCUIDgAEBIhcKFVJlc2V0UGFzc3dvcmRSZXNwb25zZSI1ChJWZXJpZnlFbWFpbFJlcXVlc3QSHwoSdmVyaWZpY2F0aW9uX3Rva2VuGAEgASgJQgOAAQEiMgoTVmVyaWZ5RW1haWxSZXNwb25zZRIbCgR1c2VyGAEgASgLMg0udXNlci52MS5Vc2VyIlcKC1Bhc3NrZXlJbmZvEgoKAmlkGAEgASgJEgwKBG5hbWUYAiABKAkSLgoKY3JlYXRlZF9hdBgDIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAiMgofUGFzc2tleUJlZ2luUmVnaXN0cmF0aW9uUmVxdWVzdBIPCgd1c2VyX2lkGAEgASgJIjgKIFBhc3NrZXlCZWdpblJlZ2lzdHJhdGlvblJlc3BvbnNlEhQKDG9wdGlvbnNfanNvbhgBIAEoDCJaCiBQYXNza2V5RmluaXNoUmVnaXN0cmF0aW9uUmVxdWVzdBIPCgd1c2VyX2lkGAEgASgJEhcKD2NyZWRlbnRpYWxfanNvbhgCIAEoDBIMCgRuYW1lGAMgASgJIkoKIVBhc3NrZXlGaW5pc2hSZWdpc3RyYXRpb25SZXNwb25zZRIlCgdwYXNza2V5GAEgASgLMhQudXNlci52MS5QYXNza2V5SW5mbyI1CiFQYXNza2V5QmVnaW5BdXRoZW50aWNhdGlvblJlcXVlc3QSEAoIdXNlcm5hbWUYASABKAkiOgoiUGFzc2tleUJlZ2luQXV0aGVudGljYXRpb25SZXNwb25zZRIUCgxvcHRpb25zX2pzb24YASABKAwiPAoiUGFzc2tleUZpbmlzaEF1dGhlbnRpY2F0aW9uUmVxdWVzdBIWCg5hc3NlcnRpb25fanNvbhgBIAEoDCJjCiNQYXNza2V5RmluaXNoQXV0aGVudGljYXRpb25SZXNwb25zZRIbCgR1c2VyGAEgASgLMg0udXNlci52MS5Vc2VyEh8KBnRva2VucxgCIAEoCzIPLnVzZXIudjEuVG9rZW5zIiYKE0xpc3RQYXNza2V5c1JlcXVlc3QSDwoHdXNlcl9pZBgBIAEoCSI+ChRMaXN0UGFzc2tleXNSZXNwb25zZRImCghwYXNza2V5cxgBIAMoCzIULnVzZXIudjEuUGFzc2tleUluZm8iOwoURGVsZXRlUGFzc2tleVJlcXVlc3QSDwoHdXNlcl9pZBgBIAEoCRISCgpwYXNza2V5X2lkGAIgASgJIhcKFURlbGV0ZVBhc3NrZXlSZXNwb25zZSqCAQoKVXNlclN0YXR1cxIbChdVU0VSX1NUQVRVU19VTlNQRUNJRklFRBAAEiQKIFVTRVJfU1RBVFVTX1BFTkRJTkdfVkVSSUZJQ0FUSU9OEAESFgoSVVNFUl9TVEFUVVNfQUNUSVZFEAISGQoVVVNFUl9TVEFUVVNfU1VTUEVOREVEEAMy5AIKC1VzZXJTZXJ2aWNlEkUKCkNyZWF0ZVVzZXISGi51c2VyLnYxLkNyZWF0ZVVzZXJSZXF1ZXN0GhsudXNlci52MS5DcmVhdGVVc2VyUmVzcG9uc2USPAoHR2V0VXNlchIXLnVzZXIudjEuR2V0VXNlclJlcXVlc3QaGC51c2VyLnYxLkdldFVzZXJSZXNwb25zZRJFCgpVcGRhdGVVc2VyEhoudXNlci52MS5VcGRhdGVVc2VyUmVxdWVzdBobLnVzZXIudjEuVXBkYXRlVXNlclJlc3BvbnNlEkUKCkRlbGV0ZVVzZXISGi51c2VyLnYxLkRlbGV0ZVVzZXJSZXF1ZXN0GhsudXNlci52MS5EZWxldGVVc2VyUmVzcG9uc2USQgoJTGlzdFVzZXJzEhkudXNlci52MS5MaXN0VXNlcnNSZXF1ZXN0GhoudXNlci52MS5MaXN0VXNlcnNSZXNwb25zZTKfBAoLQXV0aFNlcnZpY2USNgoFTG9naW4SFS51c2VyLnYxLkxvZ2luUmVxdWVzdBoWLnVzZXIudjEuTG9naW5SZXNwb25zZRJLCgxSZWZyZXNoVG9rZW4SHC51c2VyLnYxLlJlZnJlc2hUb2tlblJlcXVlc3QaHS51c2VyLnYxLlJlZnJlc2hUb2tlblJlc3BvbnNlEjkKBkxvZ291dBIWLnVzZXIudjEuTG9nb3V0UmVxdWVzdBoXLnVzZXIudjEuTG9nb3V0UmVzcG9uc2USUQoOQ2hhbmdlUGFzc3dvcmQSHi51c2VyLnYxLkNoYW5nZVBhc3N3b3JkUmVxdWVzdBofLnVzZXIudjEuQ2hhbmdlUGFzc3dvcmRSZXNwb25zZRJjChRSZXF1ZXN0UGFzc3dvcmRSZXNldBIkLnVzZXIudjEuUmVxdWVzdFBhc3N3b3JkUmVzZXRSZXF1ZXN0GiUudXNlci52MS5SZXF1ZXN0UGFzc3dvcmRSZXNldFJlc3BvbnNlEk4KDVJlc2V0UGFzc3dvcmQSHS51c2VyLnYxLlJlc2V0UGFzc3dvcmRSZXF1ZXN0Gh4udXNlci52MS5SZXNldFBhc3N3b3JkUmVzcG9uc2USSAoLVmVyaWZ5RW1haWwSGy51c2VyLnYxLlZlcmlmeUVtYWlsUmVxdWVzdBocLnVzZXIudjEuVmVyaWZ5RW1haWxSZXNwb25zZTKDBQoOUGFzc2tleVNlcnZpY2USbwoYUGFzc2tleUJlZ2luUmVnaXN0cmF0aW9uEigudXNlci52MS5QYXNza2V5QmVnaW5SZWdpc3RyYXRpb25SZXF1ZXN0GikudXNlci52MS5QYXNza2V5QmVnaW5SZWdpc3RyYXRpb25SZXNwb25zZRJyChlQYXNza2V5RmluaXNoUmVnaXN0cmF0aW9uEikudXNlci52MS5QYXNza2V5RmluaXNoUmVnaXN0cmF0aW9uUmVxdWVzdBoqLnVzZXIudjEuUGFzc2tleUZpbmlzaFJlZ2lzdHJhdGlvblJlc3BvbnNlEnUKGlBhc3NrZXlCZWdpbkF1dGhlbnRpY2F0aW9uEioudXNlci52MS5QYXNza2V5QmVnaW5BdXRoZW50aWNhdGlvblJlcXVlc3QaKy51c2VyLnYxLlBhc3NrZXlCZWdpbkF1dGhlbnRpY2F0aW9uUmVzcG9uc2USeAobUGFzc2tleUZpbmlzaEF1dGhlbnRpY2F0aW9uEisudXNlci52MS5QYXNza2V5RmluaXNoQXV0aGVudGljYXRpb25SZXF1ZXN0GiwudXNlci52MS5QYXNza2V5RmluaXNoQXV0aGVudGljYXRpb25SZXNwb25zZRJLCgxMaXN0UGFzc2tleXMSHC51c2VyLnYxLkxpc3RQYXNza2V5c1JlcXVlc3QaHS51c2VyLnYxLkxpc3RQYXNza2V5c1Jlc3BvbnNlEk4KDURlbGV0ZVBhc3NrZXkSHS51c2VyLnYxLkRlbGV0ZVBhc3NrZXlSZXF1ZXN0Gh4udXNlci52MS5EZWxldGVQYXNza2V5UmVzcG9uc2VCngEKC2NvbS51c2VyLnYxQglVc2VyUHJvdG9QAVpHZ2l0aHViLmNvbS9mcmFuY2lzcG93bGVzbGFuZC9taWNyb3NlcnZpY2VzLWFwcC1nby9nZW4vZ28vdXNlci92MTt1c2VydjGiAgNVWFiqAgdVc2VyLlYxygIHVXNlclxWMeICE1VzZXJcVjFcR1BCTWV0YWRhdGHqAghVc2VyOjpWMWIGcHJvdG8z", [file_google_protobuf_field_mask, file_google_protobuf_timestamp]);
 
 /**
  * The password and its hash are deliberately absent: credentials only ever
@@ -567,6 +567,255 @@ export const VerifyEmailResponseSchema: GenMessage<VerifyEmailResponse> = /*@__P
   messageDesc(file_user_v1_user, 25);
 
 /**
+ * @generated from message user.v1.PasskeyInfo
+ */
+export type PasskeyInfo = Message<"user.v1.PasskeyInfo"> & {
+  /**
+   * @generated from field: string id = 1;
+   */
+  id: string;
+
+  /**
+   * @generated from field: string name = 2;
+   */
+  name: string;
+
+  /**
+   * @generated from field: google.protobuf.Timestamp created_at = 3;
+   */
+  createdAt?: Timestamp | undefined;
+};
+
+/**
+ * Describes the message user.v1.PasskeyInfo.
+ * Use `create(PasskeyInfoSchema)` to create a new message.
+ */
+export const PasskeyInfoSchema: GenMessage<PasskeyInfo> = /*@__PURE__*/
+  messageDesc(file_user_v1_user, 26);
+
+/**
+ * @generated from message user.v1.PasskeyBeginRegistrationRequest
+ */
+export type PasskeyBeginRegistrationRequest = Message<"user.v1.PasskeyBeginRegistrationRequest"> & {
+  /**
+   * @generated from field: string user_id = 1;
+   */
+  userId: string;
+};
+
+/**
+ * Describes the message user.v1.PasskeyBeginRegistrationRequest.
+ * Use `create(PasskeyBeginRegistrationRequestSchema)` to create a new message.
+ */
+export const PasskeyBeginRegistrationRequestSchema: GenMessage<PasskeyBeginRegistrationRequest> = /*@__PURE__*/
+  messageDesc(file_user_v1_user, 27);
+
+/**
+ * @generated from message user.v1.PasskeyBeginRegistrationResponse
+ */
+export type PasskeyBeginRegistrationResponse = Message<"user.v1.PasskeyBeginRegistrationResponse"> & {
+  /**
+   * @generated from field: bytes options_json = 1;
+   */
+  optionsJson: Uint8Array;
+};
+
+/**
+ * Describes the message user.v1.PasskeyBeginRegistrationResponse.
+ * Use `create(PasskeyBeginRegistrationResponseSchema)` to create a new message.
+ */
+export const PasskeyBeginRegistrationResponseSchema: GenMessage<PasskeyBeginRegistrationResponse> = /*@__PURE__*/
+  messageDesc(file_user_v1_user, 28);
+
+/**
+ * @generated from message user.v1.PasskeyFinishRegistrationRequest
+ */
+export type PasskeyFinishRegistrationRequest = Message<"user.v1.PasskeyFinishRegistrationRequest"> & {
+  /**
+   * @generated from field: string user_id = 1;
+   */
+  userId: string;
+
+  /**
+   * @generated from field: bytes credential_json = 2;
+   */
+  credentialJson: Uint8Array;
+
+  /**
+   * @generated from field: string name = 3;
+   */
+  name: string;
+};
+
+/**
+ * Describes the message user.v1.PasskeyFinishRegistrationRequest.
+ * Use `create(PasskeyFinishRegistrationRequestSchema)` to create a new message.
+ */
+export const PasskeyFinishRegistrationRequestSchema: GenMessage<PasskeyFinishRegistrationRequest> = /*@__PURE__*/
+  messageDesc(file_user_v1_user, 29);
+
+/**
+ * @generated from message user.v1.PasskeyFinishRegistrationResponse
+ */
+export type PasskeyFinishRegistrationResponse = Message<"user.v1.PasskeyFinishRegistrationResponse"> & {
+  /**
+   * @generated from field: user.v1.PasskeyInfo passkey = 1;
+   */
+  passkey?: PasskeyInfo | undefined;
+};
+
+/**
+ * Describes the message user.v1.PasskeyFinishRegistrationResponse.
+ * Use `create(PasskeyFinishRegistrationResponseSchema)` to create a new message.
+ */
+export const PasskeyFinishRegistrationResponseSchema: GenMessage<PasskeyFinishRegistrationResponse> = /*@__PURE__*/
+  messageDesc(file_user_v1_user, 30);
+
+/**
+ * @generated from message user.v1.PasskeyBeginAuthenticationRequest
+ */
+export type PasskeyBeginAuthenticationRequest = Message<"user.v1.PasskeyBeginAuthenticationRequest"> & {
+  /**
+   * Optional: leave empty for usernameless flow.
+   *
+   * @generated from field: string username = 1;
+   */
+  username: string;
+};
+
+/**
+ * Describes the message user.v1.PasskeyBeginAuthenticationRequest.
+ * Use `create(PasskeyBeginAuthenticationRequestSchema)` to create a new message.
+ */
+export const PasskeyBeginAuthenticationRequestSchema: GenMessage<PasskeyBeginAuthenticationRequest> = /*@__PURE__*/
+  messageDesc(file_user_v1_user, 31);
+
+/**
+ * @generated from message user.v1.PasskeyBeginAuthenticationResponse
+ */
+export type PasskeyBeginAuthenticationResponse = Message<"user.v1.PasskeyBeginAuthenticationResponse"> & {
+  /**
+   * @generated from field: bytes options_json = 1;
+   */
+  optionsJson: Uint8Array;
+};
+
+/**
+ * Describes the message user.v1.PasskeyBeginAuthenticationResponse.
+ * Use `create(PasskeyBeginAuthenticationResponseSchema)` to create a new message.
+ */
+export const PasskeyBeginAuthenticationResponseSchema: GenMessage<PasskeyBeginAuthenticationResponse> = /*@__PURE__*/
+  messageDesc(file_user_v1_user, 32);
+
+/**
+ * @generated from message user.v1.PasskeyFinishAuthenticationRequest
+ */
+export type PasskeyFinishAuthenticationRequest = Message<"user.v1.PasskeyFinishAuthenticationRequest"> & {
+  /**
+   * @generated from field: bytes assertion_json = 1;
+   */
+  assertionJson: Uint8Array;
+};
+
+/**
+ * Describes the message user.v1.PasskeyFinishAuthenticationRequest.
+ * Use `create(PasskeyFinishAuthenticationRequestSchema)` to create a new message.
+ */
+export const PasskeyFinishAuthenticationRequestSchema: GenMessage<PasskeyFinishAuthenticationRequest> = /*@__PURE__*/
+  messageDesc(file_user_v1_user, 33);
+
+/**
+ * @generated from message user.v1.PasskeyFinishAuthenticationResponse
+ */
+export type PasskeyFinishAuthenticationResponse = Message<"user.v1.PasskeyFinishAuthenticationResponse"> & {
+  /**
+   * @generated from field: user.v1.User user = 1;
+   */
+  user?: User | undefined;
+
+  /**
+   * @generated from field: user.v1.Tokens tokens = 2;
+   */
+  tokens?: Tokens | undefined;
+};
+
+/**
+ * Describes the message user.v1.PasskeyFinishAuthenticationResponse.
+ * Use `create(PasskeyFinishAuthenticationResponseSchema)` to create a new message.
+ */
+export const PasskeyFinishAuthenticationResponseSchema: GenMessage<PasskeyFinishAuthenticationResponse> = /*@__PURE__*/
+  messageDesc(file_user_v1_user, 34);
+
+/**
+ * @generated from message user.v1.ListPasskeysRequest
+ */
+export type ListPasskeysRequest = Message<"user.v1.ListPasskeysRequest"> & {
+  /**
+   * @generated from field: string user_id = 1;
+   */
+  userId: string;
+};
+
+/**
+ * Describes the message user.v1.ListPasskeysRequest.
+ * Use `create(ListPasskeysRequestSchema)` to create a new message.
+ */
+export const ListPasskeysRequestSchema: GenMessage<ListPasskeysRequest> = /*@__PURE__*/
+  messageDesc(file_user_v1_user, 35);
+
+/**
+ * @generated from message user.v1.ListPasskeysResponse
+ */
+export type ListPasskeysResponse = Message<"user.v1.ListPasskeysResponse"> & {
+  /**
+   * @generated from field: repeated user.v1.PasskeyInfo passkeys = 1;
+   */
+  passkeys: PasskeyInfo[];
+};
+
+/**
+ * Describes the message user.v1.ListPasskeysResponse.
+ * Use `create(ListPasskeysResponseSchema)` to create a new message.
+ */
+export const ListPasskeysResponseSchema: GenMessage<ListPasskeysResponse> = /*@__PURE__*/
+  messageDesc(file_user_v1_user, 36);
+
+/**
+ * @generated from message user.v1.DeletePasskeyRequest
+ */
+export type DeletePasskeyRequest = Message<"user.v1.DeletePasskeyRequest"> & {
+  /**
+   * @generated from field: string user_id = 1;
+   */
+  userId: string;
+
+  /**
+   * @generated from field: string passkey_id = 2;
+   */
+  passkeyId: string;
+};
+
+/**
+ * Describes the message user.v1.DeletePasskeyRequest.
+ * Use `create(DeletePasskeyRequestSchema)` to create a new message.
+ */
+export const DeletePasskeyRequestSchema: GenMessage<DeletePasskeyRequest> = /*@__PURE__*/
+  messageDesc(file_user_v1_user, 37);
+
+/**
+ * @generated from message user.v1.DeletePasskeyResponse
+ */
+export type DeletePasskeyResponse = Message<"user.v1.DeletePasskeyResponse"> & {
+};
+
+/**
+ * Describes the message user.v1.DeletePasskeyResponse.
+ * Use `create(DeletePasskeyResponseSchema)` to create a new message.
+ */
+export const DeletePasskeyResponseSchema: GenMessage<DeletePasskeyResponse> = /*@__PURE__*/
+  messageDesc(file_user_v1_user, 38);
+
+/**
  * @generated from enum user.v1.UserStatus
  */
 export enum UserStatus {
@@ -706,4 +955,59 @@ export const AuthService: GenService<{
   },
 }> = /*@__PURE__*/
   serviceDesc(file_user_v1_user, 1);
+
+/**
+ * @generated from service user.v1.PasskeyService
+ */
+export const PasskeyService: GenService<{
+  /**
+   * @generated from rpc user.v1.PasskeyService.PasskeyBeginRegistration
+   */
+  passkeyBeginRegistration: {
+    methodKind: "unary";
+    input: typeof PasskeyBeginRegistrationRequestSchema;
+    output: typeof PasskeyBeginRegistrationResponseSchema;
+  },
+  /**
+   * @generated from rpc user.v1.PasskeyService.PasskeyFinishRegistration
+   */
+  passkeyFinishRegistration: {
+    methodKind: "unary";
+    input: typeof PasskeyFinishRegistrationRequestSchema;
+    output: typeof PasskeyFinishRegistrationResponseSchema;
+  },
+  /**
+   * @generated from rpc user.v1.PasskeyService.PasskeyBeginAuthentication
+   */
+  passkeyBeginAuthentication: {
+    methodKind: "unary";
+    input: typeof PasskeyBeginAuthenticationRequestSchema;
+    output: typeof PasskeyBeginAuthenticationResponseSchema;
+  },
+  /**
+   * @generated from rpc user.v1.PasskeyService.PasskeyFinishAuthentication
+   */
+  passkeyFinishAuthentication: {
+    methodKind: "unary";
+    input: typeof PasskeyFinishAuthenticationRequestSchema;
+    output: typeof PasskeyFinishAuthenticationResponseSchema;
+  },
+  /**
+   * @generated from rpc user.v1.PasskeyService.ListPasskeys
+   */
+  listPasskeys: {
+    methodKind: "unary";
+    input: typeof ListPasskeysRequestSchema;
+    output: typeof ListPasskeysResponseSchema;
+  },
+  /**
+   * @generated from rpc user.v1.PasskeyService.DeletePasskey
+   */
+  deletePasskey: {
+    methodKind: "unary";
+    input: typeof DeletePasskeyRequestSchema;
+    output: typeof DeletePasskeyResponseSchema;
+  },
+}> = /*@__PURE__*/
+  serviceDesc(file_user_v1_user, 2);
 

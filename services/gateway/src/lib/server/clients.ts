@@ -6,7 +6,7 @@ import {
 	PAYMENTS_SERVICE_URL,
 	INVENTORY_SERVICE_URL
 } from '$app/env/private';
-import { AuthService, UserService } from '#lib/gen/user/v1/user_pb.js';
+import { AuthService, PasskeyService, UserService } from '#lib/gen/user/v1/user_pb.js';
 import { OrdersService } from '#lib/gen/orders/v1/orders_pb.js';
 import { PaymentsService } from '#lib/gen/payments/v1/payments_pb.js';
 import { InventoryService } from '#lib/gen/inventory/v1/inventory_pb.js';
@@ -41,6 +41,7 @@ const transport = (baseUrl: string, accessToken?: string) => {
 export const clients = (accessToken?: string) => ({
 	auth: createClient(AuthService, transport(USERS_SERVICE_URL, accessToken)),
 	users: createClient(UserService, transport(USERS_SERVICE_URL, accessToken)),
+	passkey: createClient(PasskeyService, transport(USERS_SERVICE_URL, accessToken)),
 	orders: createClient(OrdersService, transport(ORDERS_SERVICE_URL, accessToken)),
 	payments: createClient(PaymentsService, transport(PAYMENTS_SERVICE_URL, accessToken)),
 	inventory: createClient(InventoryService, transport(INVENTORY_SERVICE_URL, accessToken))

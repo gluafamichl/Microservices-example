@@ -159,3 +159,65 @@ service AuthService {
   rpc ResetPassword(ResetPasswordRequest) returns (ResetPasswordResponse);
   rpc VerifyEmail(VerifyEmailRequest) returns (VerifyEmailResponse);
 }
+
+// ---- Passkeys (WebAuthn) ----
+
+message PasskeyInfo {
+  string id   = 1;
+  string name = 2;
+  google.protobuf.Timestamp created_at = 3;
+}
+
+message PasskeyBeginRegistrationRequest {
+  string user_id = 1;
+}
+message PasskeyBeginRegistrationResponse {
+  bytes options_json = 1;
+}
+
+message PasskeyFinishRegistrationRequest {
+  string user_id         = 1;
+  bytes  credential_json = 2;
+  string name            = 3;
+}
+message PasskeyFinishRegistrationResponse {
+  PasskeyInfo passkey = 1;
+}
+
+message PasskeyBeginAuthenticationRequest {
+  // Optional: leave empty for usernameless flow.
+  string username = 1;
+}
+message PasskeyBeginAuthenticationResponse {
+  bytes options_json = 1;
+}
+
+message PasskeyFinishAuthenticationRequest {
+  bytes assertion_json = 1;
+}
+message PasskeyFinishAuthenticationResponse {
+  User   user   = 1;
+  Tokens tokens = 2;
+}
+
+message ListPasskeysRequest {
+  string user_id = 1;
+}
+message ListPasskeysResponse {
+  repeated PasskeyInfo passkeys = 1;
+}
+
+message DeletePasskeyRequest {
+  string user_id    = 1;
+  string passkey_id = 2;
+}
+message DeletePasskeyResponse {}
+
+service PasskeyService {
+  rpc PasskeyBeginRegistration(PasskeyBeginRegistrationRequest)     returns (PasskeyBeginRegistrationResponse);
+  rpc PasskeyFinishRegistration(PasskeyFinishRegistrationRequest)   returns (PasskeyFinishRegistrationResponse);
+  rpc PasskeyBeginAuthentication(PasskeyBeginAuthenticationRequest) returns (PasskeyBeginAuthenticationResponse);
+  rpc PasskeyFinishAuthentication(PasskeyFinishAuthenticationRequest) returns (PasskeyFinishAuthenticationResponse);
+  rpc ListPasskeys(ListPasskeysRequest)   returns (ListPasskeysResponse);
+  rpc DeletePasskey(DeletePasskeyRequest) returns (DeletePasskeyResponse);
+}

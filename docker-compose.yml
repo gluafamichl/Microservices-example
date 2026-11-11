@@ -61,6 +61,9 @@ services:
       APP_ENV: development
       DATABASE_URL: postgres://postgres:postgres@users-db:5432/users?sslmode=disable
       JWT_PRIVATE_KEY: ${JWT_PRIVATE_KEY:?set JWT_PRIVATE_KEY}
+      # WebAuthn: RP ID must match the hostname browsers see; origin must match the full URL.
+      WEBAUTHN_RP_ID: localhost
+      WEBAUTHN_RP_ORIGIN: http://localhost:3000
     depends_on:
       users-db:
         condition: service_healthy

@@ -1,10 +1,11 @@
-// Command users runs the user.v1.UserService and user.v1.AuthService gRPC server.
+// Command users runs the user.v1.UserService, user.v1.AuthService and user.v1.PasskeyService gRPC server.
 package main
 
 import (
 	"context"
 	"crypto/ed25519"
 	"errors"
+	"fmt"
 	"log/slog"
 	"os"
 	"os/signal"
@@ -12,6 +13,7 @@ import (
 	"syscall"
 	"time"
 
+	"github.com/go-webauthn/webauthn/webauthn"
 	"google.golang.org/grpc"
 
 	userv1 "github.com/francispowlesland/microservices-app-go/gen/go/user/v1"
@@ -68,8 +70,10 @@ func run(logger *slog.Logger) error {
 	}
 	defer pool.Close()
 
+	st := store.New(pool)
+
 	svc, err := service.New(service.Options{
-		Store:      store.New(pool),
+		Store:      st,
 		Mailer:     service.LogMailer{Logger: logger},
 		Signer:     authn.NewSigner(priv, authn.Issuer, authn.Audience, cfg.AccessTTL),
 		Hasher:     password.NewHasher(password.Default),
@@ -87,6 +91,25 @@ func run(logger *slog.Logger) error {
 		}
 	}
 
+	wa, err := webauthn.New(&webauthn.Config{
+		RPDisplayName: "Microservices App",
+		RPID:          cfg.WebAuthnRPID,
+		RPOrigins:     []string{cfg.WebAuthnRPOrigin},
+	})
+	if err != nil {
+		return fmt.Errorf("webauthn config: %w", err)
+	}
+
+	passkeySvc := service.NewPasskeyService(service.PasskeyOptions{
+		Store:      st,
+		UserStore:  st,
+		TokenStore: st,
+		Signer:     authn.NewSigner(priv, authn.Issuer, authn.Audience, cfg.AccessTTL),
+		WebAuthn:   service.NewWebAuthnAdapter(wa),
+		RefreshTTL: cfg.RefreshTTL,
+		Logger:     logger,
+	})
+
 	return grpcx.Run(ctx, grpcx.Config{
 		Addr:          cfg.GRPCAddr,
 		AppEnv:        cfg.AppEnv,
@@ -96,6 +119,7 @@ func run(logger *slog.Logger) error {
 	}, func(s *grpc.Server) {
 		userv1.RegisterUserServiceServer(s, svc)
 		userv1.RegisterAuthServiceServer(s, svc)
+		userv1.RegisterPasskeyServiceServer(s, passkeySvc)
 	})
 }
 

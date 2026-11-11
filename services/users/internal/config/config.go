@@ -21,6 +21,10 @@ type Config struct {
 
 	BootstrapAdminEmail    string
 	BootstrapAdminPassword string
+
+	// WebAuthn
+	WebAuthnRPID     string
+	WebAuthnRPOrigin string
 }
 
 // Load reads and validates the configuration.
@@ -45,6 +49,12 @@ func Load() (Config, error) {
 		return Config{}, err
 	}
 	if c.RefreshTTL, err = config.Duration("REFRESH_TOKEN_TTL", 720*time.Hour); err != nil {
+		return Config{}, err
+	}
+	if c.WebAuthnRPID, err = config.Required("WEBAUTHN_RP_ID"); err != nil {
+		return Config{}, err
+	}
+	if c.WebAuthnRPOrigin, err = config.Required("WEBAUTHN_RP_ORIGIN"); err != nil {
 		return Config{}, err
 	}
 	if err := c.Validate(); err != nil {
