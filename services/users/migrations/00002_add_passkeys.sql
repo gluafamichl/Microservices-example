@@ -14,11 +14,12 @@ CREATE TABLE passkey_credentials (
 CREATE INDEX passkey_credentials_user_id_idx ON passkey_credentials(user_id);
 
 -- Kurzlebige Challenges (TTL ~5 min).
+-- session_data enthält die vollständige webauthn.SessionData als JSON (Challenge, UserID, etc.).
 -- consumed_at statt DELETE, damit Replay-Angriffe erkennbar bleiben.
 CREATE TABLE passkey_challenges (
     challenge_id  text        PRIMARY KEY,
     user_id       uuid        REFERENCES users(id) ON DELETE CASCADE,
-    challenge     bytea       NOT NULL,
+    session_data  jsonb       NOT NULL,
     expires_at    timestamptz NOT NULL,
     consumed_at   timestamptz,
     created_at    timestamptz NOT NULL

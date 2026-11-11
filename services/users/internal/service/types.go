@@ -105,12 +105,13 @@ type PasskeyCredential struct {
 }
 
 // PasskeyChallenge is a short-lived server-side WebAuthn challenge (TTL ~5 min).
-// Challenge is stored as the base64url string produced by go-webauthn SessionData.Challenge.
+// SessionData is the full go-webauthn SessionData serialised as JSON so all
+// fields (Challenge, UserVerification, AllowedCredentials, UserID) are preserved.
 // UserID is nil for the usernameless authentication flow.
 type PasskeyChallenge struct {
 	ChallengeID string
 	UserID      *uuid.UUID
-	Challenge   string // base64url, as-is from webauthn.SessionData.Challenge
+	SessionData []byte // JSON-encoded webauthn.SessionData
 	ExpiresAt   time.Time
 	CreatedAt   time.Time
 }

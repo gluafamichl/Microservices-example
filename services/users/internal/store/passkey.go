@@ -18,33 +18,28 @@ var _ service.PasskeyStore = (*Store)(nil)
 func (s *Store) CreatePasskeyChallenge(ctx context.Context, c service.PasskeyChallenge) error {
 	_, err := s.pool.Exec(ctx,
 		`INSERT INTO passkey_challenges
-			(challenge_id, user_id, challenge, expires_at, created_at)
+			(challenge_id, user_id, session_data, expires_at, created_at)
 		 VALUES ($1, $2, $3, $4, $5)`,
-		// Challenge is a base64url string from go-webauthn; store as bytes in the bytea column.
-		c.ChallengeID, c.UserID, []byte(c.Challenge), c.ExpiresAt, c.CreatedAt)
+		c.ChallengeID, c.UserID, c.SessionData, c.ExpiresAt, c.CreatedAt)
 	return err
 }
 
 // ConsumePasskeyChallenge atomically marks a valid challenge as consumed.
 // Returns service.ErrChallengeExpired if unknown, expired, or already consumed.
 func (s *Store) ConsumePasskeyChallenge(ctx context.Context, challengeID string, now time.Time) (service.PasskeyChallenge, error) {
-	var (
-		c             service.PasskeyChallenge
-		challengeBytes []byte
-	)
+	var c service.PasskeyChallenge
 	err := s.pool.QueryRow(ctx,
 		`UPDATE passkey_challenges
 		 SET    consumed_at = $2
 		 WHERE  challenge_id = $1
 		   AND  consumed_at  IS NULL
 		   AND  expires_at   > $2
-		 RETURNING challenge_id, user_id, challenge, expires_at, created_at`,
+		 RETURNING challenge_id, user_id, session_data, expires_at, created_at`,
 		challengeID, now,
-	).Scan(&c.ChallengeID, &c.UserID, &challengeBytes, &c.ExpiresAt, &c.CreatedAt)
+	).Scan(&c.ChallengeID, &c.UserID, &c.SessionData, &c.ExpiresAt, &c.CreatedAt)
 	if pgxutil.IsNotFound(err) {
 		return service.PasskeyChallenge{}, service.ErrChallengeExpired
 	}
-	c.Challenge = string(challengeBytes)
 	return c, err
 }
 

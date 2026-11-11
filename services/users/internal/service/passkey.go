@@ -138,6 +138,11 @@ func (s *PasskeyService) PasskeyBeginRegistration(ctx context.Context, req *user
 		return nil, s.internal(ctx, "begin registration", err)
 	}
 
+	sessionJSON, err := json.Marshal(session)
+	if err != nil {
+		return nil, s.internal(ctx, "marshal registration session", err)
+	}
+
 	challengeID, err := newChallengeID()
 	if err != nil {
 		return nil, s.internal(ctx, "new challenge id", err)
@@ -147,7 +152,7 @@ func (s *PasskeyService) PasskeyBeginRegistration(ctx context.Context, req *user
 	c := PasskeyChallenge{
 		ChallengeID: challengeID,
 		UserID:      &userID,
-		Challenge:   session.Challenge,
+		SessionData: sessionJSON,
 		ExpiresAt:   now.Add(challengeTTL),
 		CreatedAt:   now,
 	}
@@ -204,10 +209,14 @@ func (s *PasskeyService) PasskeyFinishRegistration(ctx context.Context, req *use
 		return nil, status.Error(codes.InvalidArgument, "invalid credential response")
 	}
 
-	session := webauthn.SessionData{Challenge: challenge.Challenge}
+	var session webauthn.SessionData
+	if err := json.Unmarshal(challenge.SessionData, &session); err != nil {
+		return nil, s.internal(ctx, "unmarshal registration session", err)
+	}
 	credential, err := s.wa.ValidateRegistration(passkeyUser{user: u}, session, parsedResponse)
 	if err != nil {
-		return nil, status.Error(codes.InvalidArgument, "passkey registration verification failed")
+		s.log.WarnContext(ctx, "passkey registration verification failed", slog.Any("error", err))
+		return nil, status.Errorf(codes.InvalidArgument, "passkey registration verification failed: %v", err)
 	}
 
 	name := req.GetName()
@@ -249,10 +258,15 @@ func (s *PasskeyService) PasskeyBeginAuthentication(ctx context.Context, req *us
 		return nil, s.internal(ctx, "new challenge id", err)
 	}
 
+	sessionJSON, err := json.Marshal(session)
+	if err != nil {
+		return nil, s.internal(ctx, "marshal authentication session", err)
+	}
+
 	now := s.nowUTC()
 	c := PasskeyChallenge{
 		ChallengeID: challengeID,
-		Challenge:   session.Challenge,
+		SessionData: sessionJSON,
 		ExpiresAt:   now.Add(challengeTTL),
 		CreatedAt:   now,
 	}
@@ -295,7 +309,10 @@ func (s *PasskeyService) PasskeyFinishAuthentication(ctx context.Context, req *u
 		return nil, status.Error(codes.InvalidArgument, "invalid assertion response")
 	}
 
-	session := webauthn.SessionData{Challenge: challenge.Challenge}
+	var session webauthn.SessionData
+	if err := json.Unmarshal(challenge.SessionData, &session); err != nil {
+		return nil, s.internal(ctx, "unmarshal authentication session", err)
+	}
 
 	// DiscoverableUserHandler: resolve user by raw credential ID from the store.
 	handler := func(rawID, _ []byte) (webauthn.User, error) {
